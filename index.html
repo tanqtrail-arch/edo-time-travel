@@ -18,20 +18,8 @@
   <script src="./bundle.js"></script>
   <!-- ===== 🆕 TRAIL共通ナビ初期化 ===== -->
   <script>
-  TrailNav.init({
-    gameName: '時代迷路',
-    gameEmoji: '⏳',
-    gameHomeId: 'root',
-    tgp32Url: 'https://trail-game-pro-3-2.onrender.com',
-    apiBase:  'https://trail-game-pro-3-2.onrender.com/api',
-  });
-  // bundle.jsはビルド済みのため、MutationObserverでゲーム状態変化を監視
-  window.showGameHome = function() {
-    if (confirm('ゲームを中断してホームに戻りますか？')) {
-      if (typeof TrailNav !== 'undefined') { TrailNav.flushAltWithRetry(); TrailNav.showNav(); }
-      location.reload();
-    }
-  };
+  DarwinBridge.ready();
+  window.showGameHome = function() { DarwinBridge.exit(); };
   </script>
 </body>
 </html>
